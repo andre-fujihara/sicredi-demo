@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: sicredi-demo
+  jpa:
+    generate-ddl: true
+    hibernate.ddl-auto: update
+
+# Configurações para o banco de dado utilizado
+  data:
+    mongodb:
+#      host: ${CONFIG_MONGODB_HOST:localhost:27017}
+      uri: mongodb://root:example@sicredi-mongo:27017/sicredi-db?authSource=admin
+#      database: sicredi-db
+#      username: ${CONFIG_MONGODB_ADMINUSERNAME:root}
+#      password: ${CONFIG_MONGODB_ADMINPASSWORD:example}
+
+# Configurações para o produtor da fila de mensageria utilizada
+  kafka:
+    template:
+      default-topic: sessao-finalizada
+    producer:
+      bootstrap-servers: sicredi-kafka:9092
+
+# Valor para o fechamento de sessão
+fechamentosessao:
+  executioninterval: 60000
+
+# Parâmetros de ingegração externa
+external:
+  validador-usuario:
+    url: https://user-info.herokuapp.com
+
+
+
