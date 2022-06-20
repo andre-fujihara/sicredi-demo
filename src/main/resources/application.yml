@@ -9,7 +9,6 @@ spring:
   data:
     mongodb:
         host: ${CONFIG_MONGODB_HOST:localhost:27017}
-#      uri: mongodb://root:example@sicredi-mongo:27017/sicredi-db?authSource=admin
         database: sicredi-db
         username: ${CONFIG_MONGODB_ADMINUSERNAME:root}
         password: ${CONFIG_MONGODB_ADMINPASSWORD:example}

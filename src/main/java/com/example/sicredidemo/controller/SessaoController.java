@@ -32,7 +32,8 @@ public class SessaoController {
 
     @Operation(summary = "Abertura da sessão da pauta", tags = "Sessao")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Sessão aberta com sucesso"),
+            @ApiResponse(responseCode = "201", description = "Sessão aberta com sucesso",
+                    content = @Content(schema = @Schema(implementation = Void.class))),
             @ApiResponse(responseCode = "404", description = "Pauta não encontrado",
                     content = @Content(schema = @Schema(implementation = ErrorDTO.class))),
             @ApiResponse(responseCode = "400", description = "Bad Request",
@@ -47,7 +48,8 @@ public class SessaoController {
 
     @Operation(summary = "Realiza uma votação utilizando o id da pauta, do associado e sua escolha de votação", tags = "Sessao")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Voto realizado com sucesso"),
+            @ApiResponse(responseCode = "201", description = "Voto realizado com sucesso",
+                    content = @Content(schema = @Schema(implementation = Void.class))),
             @ApiResponse(responseCode = "404", description = "Pauta ou associado não encontrado",
                     content = @Content(schema = @Schema(implementation = ErrorDTO.class))),
             @ApiResponse(responseCode = "400", description = "Bad Request",
@@ -57,8 +59,8 @@ public class SessaoController {
     public final ResponseEntity votarPauta(
             @Valid @PathVariable String pautaId,
             @Valid @PathVariable String associadoId,
-            @Valid @RequestBody ValorVotoEnum voto){
-        votoService.votarPauta(pautaId, associadoId, voto);
+            @Valid @RequestBody String voto){
+        votoService.votarPauta(pautaId, associadoId, ValorVotoEnum.valueOf(voto));
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 

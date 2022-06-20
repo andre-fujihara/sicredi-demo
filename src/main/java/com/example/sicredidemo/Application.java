@@ -1,6 +1,5 @@
 package com.example.sicredidemo;
 
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
@@ -11,12 +10,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-//@OpenAPIDefinition(
-//        info = @Info(
-//                title = "Project provide new functionalities for the invoice API",
-//                description = "Project that create Invoices on a local datasource and stores on an External API"
-//        )
-//)
 public class Application {
 
     public static void main(String[] args) {

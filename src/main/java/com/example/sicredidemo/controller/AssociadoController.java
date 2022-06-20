@@ -5,6 +5,7 @@ import com.example.sicredidemo.domain.request.AssociadoRequest;
 import com.example.sicredidemo.domain.response.AssociadoResponse;
 import com.example.sicredidemo.service.AssociadoService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -30,7 +31,8 @@ public class AssociadoController {
 
     @Operation(summary = "Criação de associados", tags = "Associado")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Associado criado com sucesso"),
+            @ApiResponse(responseCode = "201", description = "Associado criado com sucesso",
+                    content = @Content(schema = @Schema(implementation = Void.class))),
             @ApiResponse(responseCode = "404", description = "Associado não encontrado",
                     content = @Content(schema = @Schema(implementation = ErrorDTO.class))),
             @ApiResponse(responseCode = "400", description = "Bad Request",
@@ -45,7 +47,7 @@ public class AssociadoController {
     @Operation(summary = "Consulta de todos os usuários cadastrados", tags = "Associado")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "A lista de associados cadastrados",
-                    content = @Content(schema = @Schema(implementation = List.class))),
+                    content = @Content(array = @ArraySchema(schema = @Schema(implementation = AssociadoResponse.class)))),
             @ApiResponse(responseCode = "404", description = "Associado não encontrado",
                     content = @Content(schema = @Schema(implementation = ErrorDTO.class))),
             @ApiResponse(responseCode = "400", description = "Bad Request",

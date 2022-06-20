@@ -40,7 +40,6 @@ public class VotoService {
         if(!cpfManagerService.isUsuarioPodeVotar(associado.getCpf()))
             throw new SicrediErroException("Usuário não pode votar no momento", BAD_REQUEST);
 
-
         votoRepository.findByPautaIdAndAssociadoId(pautaId, associadoId).ifPresent(v -> {
             throw new SicrediErroException("Voto já realizado", BAD_REQUEST);
         });

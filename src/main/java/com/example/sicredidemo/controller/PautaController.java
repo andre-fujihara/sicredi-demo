@@ -6,6 +6,7 @@ import com.example.sicredidemo.domain.response.AssociadoResponse;
 import com.example.sicredidemo.domain.response.PautaResponse;
 import com.example.sicredidemo.service.PautaService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -32,7 +33,8 @@ public class PautaController {
 
     @Operation(summary = "Criação de uma nova pauta", tags = "Pauta")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Pauta criada com sucesso"),
+            @ApiResponse(responseCode = "201", description = "Pauta criada com sucesso",
+                    content = @Content(schema = @Schema(implementation = Void.class))),
             @ApiResponse(responseCode = "404", description = "Pauta não encontrada",
                     content = @Content(schema = @Schema(implementation = ErrorDTO.class))),
             @ApiResponse(responseCode = "400", description = "Bad Request",
@@ -47,7 +49,7 @@ public class PautaController {
     @Operation(summary = "Consulta de todos as pautas cadastradas", tags = "Pauta")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Retorna a lista de pautas existentes",
-                    content = @Content(schema = @Schema(implementation = List.class))),
+                    content = @Content(array = @ArraySchema(schema = @Schema(implementation = PautaResponse.class)))),
             @ApiResponse(responseCode = "404", description = "Pauta não encontrada",
                     content = @Content(schema = @Schema(implementation = ErrorDTO.class))),
             @ApiResponse(responseCode = "400", description = "Bad Request",
