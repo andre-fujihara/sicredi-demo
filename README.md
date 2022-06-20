@@ -71,6 +71,8 @@ O sistema irá compilar o projeto seguindo os passos descritos no ```Dockerfile`
 - Como banco foi escolhido um banco NoSQL pois as operações realizadas serão principalmente de criação e leitura, oque beneficia bastante esse tipo de abordagem no desempenho das operações
 - Foram criados endpoints extra para facilitar a validação dos dados
 - Os testes unitários são executados ao executar o comando ```mvn clean install``` e podem ser integrados a uma solução de CI / CD utilizando ferramentas como Sonar Cube.
+- Na branch ```solucao-arquitetura-hexagonal```, existe uma versão mais complexa mas mais escalável e robusta
+  - [Arquitetura hexagonal](https://github.com/andre-fujihara/sicredi-demo/tree/solucao-arquitetura-hexagonal)
 
 # Tarefas do exercício
 
